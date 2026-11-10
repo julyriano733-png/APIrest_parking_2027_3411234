@@ -18,7 +18,7 @@ public interface EspacioParqueoRepository extends JpaRepository<EspacioParqueo, 
 @Query("select count(e) > 0 from EpacioParqueo e where e.numero = :numero ")
 boolean existexistsByNumero(@Param("numero")Integer numero);
 @Lock(LockModeType.PESSIMISTIC_WRITE)
-Optional<EspacioParqueo > findFirstByTpioAndEstadoOrderByNumeroAsc(TipoVehiculo tipo, EstadoEspacio estacdo);
+Optional<EspacioParqueo > findFirstByTipoAndEstadoOrderByNumeroAsc(TipoVehiculo tipo, EstadoEspacio estado);
 
 
 @Lock(LockModeType.PESSIMISTIC_WRITE)
