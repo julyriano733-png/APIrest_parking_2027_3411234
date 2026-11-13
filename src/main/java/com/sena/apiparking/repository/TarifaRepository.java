@@ -19,9 +19,9 @@ public interface TarifaRepository extends JpaRepository<Tarifa, Long> {
     @Query("select count(t) > 0 from Tarifa t where t.tipo = :tipo and t.vigenteHasta is null")
     boolean existsByTipoAndVigenteHastaIsNull(@Param("tipo") TipoVehiculo tipo);
 
-    Optional<Tarifa> findByTipoAndVigenteHastaIsNull(TipoVehiculo tipo);
+    Optional<Tarifa> findFirstByTipoAndVigenteHastaIsNull(TipoVehiculo tipo);
 
-    List<Tarifa> findAllByTipoAscVigenteDesdeDesc();
+    List<Tarifa> findAllByOrderByTipoAscVigenteDesdeDesc();
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("select t from Tarifa t where t.tipo = :tipo and t.vigenteHasta is null")
